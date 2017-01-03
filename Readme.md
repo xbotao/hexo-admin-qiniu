@@ -23,7 +23,8 @@ admin:
       bucketHost: 'you BK Host'
 ```
 #### AK and SK
-![](docs/45y6x0ke5t57b5obonksf76u8r.png)
+
+[控制面板] - [秘钥管理]
 
 ![](docs/j2w63t3jsu0dax632imkklcy2e.png)
 
