@@ -23,12 +23,12 @@ admin:
       bucketHost: 'you BK Host'
 ```
 #### AK and SK
-![](http://oh1jgyw0v.bkt.clouddn.com/45y6x0ke5t57b5obonksf76u8r.png)
+![](docs/45y6x0ke5t57b5obonksf76u8r.png)
 
-![](http://oh1jgyw0v.bkt.clouddn.com/j2w63t3jsu0dax632imkklcy2e.png)
+![](docs/j2w63t3jsu0dax632imkklcy2e.png)
 
 #### BucketName and bucketHost
-![](http://oh1jgyw0v.bkt.clouddn.com/74qyc2dn56pw430zb3jgw849dl.png)
+![](docs/74qyc2dn56pw430zb3jgw849dl.png)
 
 ## Deploy
 
@@ -43,5 +43,5 @@ deploy:
 ```
 ### how to use
 
-![](http://oh1jgyw0v.bkt.clouddn.com/xyrqgzm3428lrzrohsr7fovahh.png)
+![](docs/xyrqgzm3428lrzrohsr7fovahh.png)
 
