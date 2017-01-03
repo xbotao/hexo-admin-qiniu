@@ -2,68 +2,46 @@
 
 An admin UI for the [Hexo blog engine](http://hexo.io). Based off of the [Ghost](http://ghost.org) interface, with inspiration from [svbtle](http://svbtle.com) and [prose.io](http://prose.io).
 
-## Hexo Version
+## Hexo-admin
 
-For 2.x, use version `0.3.0` of this plugin. Version `1.x` and beyond only
-support Hexo v3.x.
+[hexo-admin](https://github.com/jaredly/hexo-admin)
 
-### Contents
-- [**Screenshots**](#screenshots)
-- [**Quickstart**](#quickstart)
-- [**Credits**](#credits)
+## Hexo-admin with qiniu
 
-# Screenshots
-![posts view](docs/pasted-0.png?raw=true)
+Hexo-admin with qiniu is alter by the npm hexo-admin@2.1.0
 
-![editor view](docs/pasted-1.png?raw=true)
+### how to use qiniu
 
-# Quickstart
-### 1. Setup hexo & create a blog
-```sh
-npm install -g hexo
-cd ~/
-hexo init my-blog
-cd my-blog
-npm install
-```
-### 2. Install the admin & start things up
-```sh
-npm install --save hexo-admin
-hexo server -d
-open http://localhost:4000/admin/
-```
-### 3. Profit!
-The UI should be pretty discoverable -- let me know if you can't find something.
-
-### 4. Password protection
-If you're using Hexo admin on your live server, you want some password
-protection. To enable this, you just add a few config variables to your hexo
-`_config.yml`:
+add your qiniu config in project config file `_config.yml`
 
 ```
 admin:
-  username: myfavoritename
-  password_hash: be121740bf988b2225a313fa1f107ca1
-  secret: a secret something
+  qiniuCfg:
+      AccessKey: 'your qiniu AK'
+      SecretKey: 'your qiniu SK'
+      BucketName: 'your BK Name'
+      bucketHost: 'you BK Host'
 ```
+#### AK and SK
+![](http://oh1jgyw0v.bkt.clouddn.com/45y6x0ke5t57b5obonksf76u8r.png)
 
-The `password_hash` is the bcrypt hash of your password. You can use [this
-site](https://www.bcrypt-generator.com/) to come up with that, or whatever you
-want. The `secret` is used to make the cookies secure, so it's a good idea to
-have it be long and complicated.
+![](http://oh1jgyw0v.bkt.clouddn.com/j2w63t3jsu0dax632imkklcy2e.png)
 
-Once that's in place, start up your hexo server and going to `/admin/` will
-require you to enter your password.
+#### BucketName and bucketHost
+![](http://oh1jgyw0v.bkt.clouddn.com/74qyc2dn56pw430zb3jgw849dl.png)
 
-### 5. Contribute!
-- let me know how it can be improved in the [github
-  issues](https://github.com/jaredly/hexo-admin/issues)
-- [fork](https://github.com/jaredly/hexo-admin) and pull-request
+## Deploy
 
-# Credits
+Click deploy button and pop a terminal, deploy the blog to your pages.
+Before this, you should config `deploy` in `_config.yml`
 
-built with ❤ by [Jared Forsyth](http://jaredly.github.io)
-([@jaredforsyth](http://twitter.com/jaredforsyth)) using
-[react](http://facebook.github.io/react), [browserify](
-http://browserify.org), and [less](http://lesscss.org).
-# hexo-admin
+```
+deploy:
+  type: git
+  repo:
+    github: xxxxxxxxxxxx.git,master
+```
+### how to use
+
+![](http://oh1jgyw0v.bkt.clouddn.com/xyrqgzm3428lrzrohsr7fovahh.png)
+
