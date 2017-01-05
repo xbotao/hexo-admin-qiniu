@@ -8,11 +8,16 @@ An admin UI for the [Hexo blog engine](http://hexo.io). Based off of the [Ghost]
 
 ## Hexo-admin with qiniu
 
-Hexo-admin with qiniu is alter by the npm hexo-admin@2.1.0
+- [x] Hexo-admin@2.1.0修改版， 添加上传图片到七牛
+- [x] 修复代码预览最后空行问题
+- [x] 修复windows下不能使用Deploy的问题
 
-### how to use qiniu
 
-add your qiniu config in project config file `_config.yml`
+## 如何使用七牛
+
+博客配置文件中 `_config.yml` 添加七牛配置属性
+
+查看[七牛配置](docs/how-to-use-qiniu.md)
 
 ```
 admin:
@@ -22,19 +27,12 @@ admin:
       BucketName: 'your BK Name'
       bucketHost: 'you BK Host'
 ```
-#### AK and SK
 
-[控制面板] - [秘钥管理]
-
-![](docs/j2w63t3jsu0dax632imkklcy2e.png)
-
-#### BucketName and bucketHost
-![](docs/74qyc2dn56pw430zb3jgw849dl.png)
 
 ## Deploy
 
-Click deploy button and pop a terminal, deploy the blog to your pages.
-Before this, you should config `deploy` in `_config.yml`
+点击`deploy`按钮，发布博客到静态托管网页。
+使用之前，需要在博客配置文件`_config.yml`中配置好`deploy`属性
 
 ```
 deploy:
@@ -42,7 +40,7 @@ deploy:
   repo:
     github: xxxxxxxxxxxx.git,master
 ```
-### how to use
+### 如何发布
 
 ![](docs/xyrqgzm3428lrzrohsr7fovahh.png)
 
