@@ -1,16 +1,16 @@
 {
   "_args": [
     [
-      "hexo-admin",
+      "hexo-admin-qiniu",
       "E:\\WorkSpace\\webProject\\my-blog"
     ]
   ],
   "_cnpm_publish_time": 1466695208089,
-  "_from": "hexo-admin@latest",
-  "_id": "hexo-admin@2.1.0",
+  "_from": "hexo-admin-qiniu@latest",
+  "_id": "hexo-admin-qiniu@2.1.0",
   "_inCache": true,
   "_installable": true,
-  "_location": "/hexo-admin",
+  "_location": "/hexo-admin-qiniu",
   "_nodeVersion": "6.2.1",
   "_npmOperationalInternal": {
     "host": "packages-12-west.internal.npmjs.com",
@@ -25,8 +25,8 @@
     "ent": "2.2.0"
   },
   "_requested": {
-    "name": "hexo-admin",
-    "raw": "hexo-admin",
+    "name": "hexo-admin-qiniu",
+    "raw": "hexo-admin-qiniu",
     "rawSpec": "",
     "scope": null,
     "spec": "latest",
@@ -38,14 +38,14 @@
   "_resolved": "https://registry.npm.taobao.org/hexo-admin/download/hexo-admin-2.1.0.tgz",
   "_shasum": "2868ad94262547d55df0d4f4ea70e512430fbe66",
   "_shrinkwrap": null,
-  "_spec": "hexo-admin",
+  "_spec": "hexo-admin-qiniu",
   "_where": "E:\\WorkSpace\\webProject\\my-blog",
   "author": {
-    "email": "jared@jaredforsyth.com",
-    "name": "Jared Forsyth"
+    "email": "xbotao2014@163.com",
+    "name": "Lazyboy"
   },
   "bugs": {
-    "url": "https://github.com/jaredly/hexo-admin/issues"
+    "url": "https://github.com/xbotao/hexo-admin-qiniu/issues"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
@@ -107,12 +107,12 @@
       "name": "jabapyth"
     }
   ],
-  "name": "hexo-admin",
+  "name": "hexo-admin-qiniu",
   "optionalDependencies": {},
   "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jaredly/hexo-admin.git"
+    "url": "git+https://github.com/xbotao/hexo-admin-qiniu.git"
   },
   "scripts": {
     "prepublish": "gulp build"
