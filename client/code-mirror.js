@@ -102,12 +102,13 @@ var CodeMirror = React.createClass({
 
     api.getToken(imgName).then((res) => {
       var bucketHost= res.bucketHost;
+      var imageslime = res.imageslime;
         _qiniuUpload(blob, res.token, imgName, function(res){
           var pasteImg = '![paste image](http://'+ bucketHost +'/' + res.key + ')';
 
           //images slim
-          if(res.imageslime){
-            var pasteImg = '![paste image](http://'+ bucketHost +'/' + res.key + '?imageslim)';
+          if(imageslime){
+            pasteImg = '![paste image](http://'+ bucketHost +'/' + res.key + '?imageslim)';
           }
           
           cmEditor.replaceSelection(pasteImg)
