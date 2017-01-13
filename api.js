@@ -262,6 +262,13 @@ module.exports = function (app, hexo) {
       return res.done({error: 'Config value "admin.qiniuCfg" not found'});
     }
 
+    var imageSlimFlg = false;
+    if(hexo.config.admin.qiniuCfg.imageslim){
+      imageSlimFlg = hexo.config.admin.qiniuCfg.imageslim;
+    }
+
+    //console.log(hexo.config.admin.qiniuCfg.imageslim);
+
     var qiniu = require("qiniu");
 
     //set 'Access Key' and 'Secret Key'
@@ -281,7 +288,7 @@ module.exports = function (app, hexo) {
     }
 
     token = uptoken(bucket, key);
-    res.done({token: token, bucketHost: hexo.config.admin.qiniuCfg.bucketHost});
+    res.done({token: token, bucketHost: hexo.config.admin.qiniuCfg.bucketHost, imageslime: imageSlimFlg});
 
   });
 

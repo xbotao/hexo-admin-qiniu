@@ -104,6 +104,12 @@ var CodeMirror = React.createClass({
       var bucketHost= res.bucketHost;
         _qiniuUpload(blob, res.token, imgName, function(res){
           var pasteImg = '![paste image](http://'+ bucketHost +'/' + res.key + ')';
+
+          //images slim
+          if(res.imageslime){
+            var pasteImg = '![paste image](http://'+ bucketHost +'/' + res.key + '?imageslim)';
+          }
+          
           cmEditor.replaceSelection(pasteImg)
         })
       });
