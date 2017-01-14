@@ -81,7 +81,7 @@ var Posts = React.createClass({
         'posts_display': true,
         'posts_display--draft': current.isDraft
       })}>
-        {current.isDraft && <div className="posts_draft-message">Draft</div>}
+        {current.isDraft && <div className="posts_draft-message">草稿</div>}
         <Rendered
           ref="rendered"
           className="posts_content"

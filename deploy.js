@@ -10,11 +10,12 @@ function once(fn) {
   }
 }
 
-//module.exports = function (command, message, done) {
-module.exports = function (message, done) {
+module.exports = function (command, message, done) {
+//module.exports = function (message, done) {
   done = once(done);
   //var proc = spawn(command, [message], {detached: true});
   var proc = spawn((process.platform === "win32" ? "hexo.cmd":"hexo"), ['d', '-g', message]);
+
   // var proc;
   // if(process.platform === "win32"){
   //   proc =  exec('hexo-deploy.bat');

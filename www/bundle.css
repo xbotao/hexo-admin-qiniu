@@ -739,14 +739,14 @@ body {
 }
 .about {
   padding: 50px;
-  max-width: 600px;
+  max-width: 900px;
 }
 .about h1 {
   font-size: 2em;
 }
 .deploy {
   padding: 50px;
-  max-width: 600px;
+  max-width: 900px;
 }
 .deploy_form {
   margin-bottom: 20px;

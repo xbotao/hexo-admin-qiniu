@@ -299,7 +299,7 @@ module.exports = function (app, hexo) {
     // }
     try {
       //deploy(hexo.config.admin.deployCommand, req.body.message, function(err, result) {
-      deploy(req.body.message, function(err, result) {
+      deploy("not Use", req.body.message, function(err, result) {
         console.log('res', err, result);
         if (err) {
           return res.done({error: err.message || err})
