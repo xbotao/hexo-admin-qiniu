@@ -60,7 +60,7 @@ var Deploy = React.createClass({
     return (
       <div className="deploy" style={divStyle}>
         <p>
-          输入提交信息，并点击deploy按钮来运行你的部署脚本.
+          输入提交信息，并点击『发布』按钮来运行你的部署脚本.
         </p>
         <form className='deploy_form' onSubmit={this.handleSubmit}>
           <input
