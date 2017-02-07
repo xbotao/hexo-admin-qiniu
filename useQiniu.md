@@ -1,3 +1,7 @@
+---
+layout: default
+title: 如何使用七牛
+---
 
 # 如何使用[七牛](http://www.qiniu.com/)
 
