@@ -3,7 +3,7 @@ title: hexo-admin-qiniu
 description: 使用说明
 layout: default
 ---
-# 基础入门
+## 基础入门
 
 ### 1. 安装Hexo并创建博客
 
@@ -23,7 +23,7 @@ hexo server -d
 open http://localhost:4000/admin/
 ```
 
-# 使用技巧
+## 使用技巧
 
 <ul class="post-list">
   {% for post in site.posts %}
