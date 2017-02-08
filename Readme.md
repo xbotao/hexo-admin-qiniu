@@ -1,5 +1,3 @@
-![logo](docs/logo.png?raw=true)
-
 An admin UI for the [Hexo blog engine](http://hexo.io). Based off of the [Ghost](http://ghost.org) interface, with inspiration from [svbtle](http://svbtle.com) and [prose.io](http://prose.io).
 
 ## Hexo-admin
