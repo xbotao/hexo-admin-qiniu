@@ -12,8 +12,9 @@ var moment = require('moment')
 var Page = React.createClass({
   mixins: [DataFetcher((params) => {
     return {
-      page: api.page(params.pageId)//,
-      //tagsAndCategories: api.tagsAndCategories()
+      page: api.page(params.pageId),
+      settings: api.settings(),
+      //tagsCategoriesAndMetadata: api.tagsCategoriesAndMetadata()
     }
   })],
 
@@ -93,12 +94,10 @@ var Page = React.createClass({
 
   render: function () {
     var page = this.state.page
-    if (!page) {
+    var settings = this.state.settings
+    if (!page || !settings) {
       return <span>Loading...</span>
     }
-    var url = window.location.href.replace(/^.*\/\/[^\/]+/, '').split('/')
-    var rootPath = url.slice(0, url.indexOf('admin')).join('/')
-    var permaLink = rootPath + '/' + page.path
     return Editor({
       isPage: true,
       post: this.state.page,
@@ -108,13 +107,13 @@ var Page = React.createClass({
       updated: this.state.updated,
       title: this.state.title,
       rendered: this.state.rendered,
-      previewLink: permaLink,
       onChange: this.handleChange,
       onChangeContent: this.handleChangeContent,
       onChangeTitle: this.handleChangeTitle,
       onPublish: this.handlePublish,
       onUnpublish: this.handleUnpublish,
-      tagsAndCategories: this.state.tagsAndCategories,
+      tagsCategoriesAndMetadata: this.state.tagsCategoriesAndMetadata,
+      adminSettings: settings
     })
   }
 });

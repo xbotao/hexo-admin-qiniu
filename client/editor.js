@@ -1,4 +1,5 @@
 
+var path = require('path')
 var React = require('react/addons')
 var cx = React.addons.classSet
 var Promise = require('es6-promise').Promise
@@ -6,19 +7,39 @@ var PT = React.PropTypes
 var CodeMirror = require('./code-mirror')
 var SinceWhen = require('./since-when')
 var Rendered = require('./rendered')
+var CheckGrammar = require('./check-grammar')
 var ConfigDropper = require('./config-dropper')
+var RenameFile = require('./rename-file')
 
 var Editor = React.createClass({
   propTypes: {
     post: PT.object,
     raw: PT.string,
+    updatedRaw: PT.string,
     onChangeTitle: PT.func,
     title: PT.string,
     updated: PT.object,
     isDraft: PT.bool,
     onPublish: PT.func.isRequired,
     onUnpublish: PT.func.isRequired,
-    tagsAndCategories: PT.object
+    tagsCategoriesAndMetadata: PT.object,
+    adminSettings: PT.object
+  },
+
+  getInitialState: function() {
+    var url = window.location.pathname.split('/')
+    var rootPath = url.slice(0, url.indexOf('admin')).join('/')
+    return {
+      previewLink: path.join(rootPath, this.props.post.path),
+      checkingGrammar: false,
+    }
+  },
+
+  handlePreviewLink: function(previewLink) {
+    console.log('updating preview link')
+    this.setState({
+      previewLink: path.join(previewLink)
+    })
   },
 
   handleChangeTitle: function (e) {
@@ -26,9 +47,17 @@ var Editor = React.createClass({
   },
 
   handleScroll: function (percent) {
-    var node = this.refs.rendered.getDOMNode()
-    var height = node.getBoundingClientRect().height
-    node.scrollTop = (node.scrollHeight - height) * percent
+    if (!this.state.checkingGrammar) {
+      var node = this.refs.rendered.getDOMNode()
+      var height = node.getBoundingClientRect().height
+      node.scrollTop = (node.scrollHeight - height) * percent
+    }
+  },
+
+  onCheckGrammar: function () {
+    this.setState({
+      checkingGrammar: !this.state.checkingGrammar
+    })
   },
 
   render: function () {
@@ -43,7 +72,7 @@ var Editor = React.createClass({
           onChange={this.handleChangeTitle}/>
         {!this.props.isPage && <ConfigDropper
           post={this.props.post}
-          tagsAndCategories={this.props.tagsAndCategories}
+          tagsCategoriesAndMetadata={this.props.tagsCategoriesAndMetadata}
           onChange={this.props.onChange}/>}
         {!this.props.isPage && (this.props.isDraft ?
           <button className="editor_publish" onClick={this.props.onPublish}>
@@ -53,8 +82,14 @@ var Editor = React.createClass({
             Unpublish
           </button>)}
           {!this.props.isPage &&
-          <button className="editor_remove" onClick={this.props.onRemove}>
+          <button className="editor_remove" title="Remove"
+                  onClick={this.props.onRemove}>
             <i className="fa fa-times"/>
+          </button>}
+          {!this.props.isPage &&
+          <button className="editor_checkGrammar" title="Check for Writing Improvements"
+                  onClick={this.onCheckGrammar}>
+            <i className="fa fa-check-circle-o"/>
           </button>}
       </div>
       <div className="editor_main">
@@ -64,12 +99,16 @@ var Editor = React.createClass({
                 <SinceWhen className="editor_updated"
                 prefix="saved "
                 time={this.props.updated}/>}
-            Markdown
+            <span>Markdown&nbsp;&nbsp;
+              <RenameFile post={this.props.post}
+                handlePreviewLink={this.handlePreviewLink} /></span>
           </div>
           <CodeMirror
             onScroll={this.handleScroll}
             initialValue={this.props.raw}
-            onChange={this.props.onChangeContent} />
+            onChange={this.props.onChangeContent}
+            forceLineNumbers={this.state.checkingGrammar}
+            adminSettings={this.props.adminSettings} />
         </div>
         <div className="editor_display">
           <div className="editor_display-header">
@@ -77,14 +116,17 @@ var Editor = React.createClass({
               {this.props.wordCount} words
             </span>
             Preview
-            {' '}<a className="editor_perma-link" href={this.props.previewLink} target="_blank">
-              <i className="fa fa-link"/> {this.props.previewLink}
+            {' '}<a className="editor_perma-link" href={this.state.previewLink} target="_blank">
+              <i className="fa fa-link"/> {this.state.previewLink}
             </a>
           </div>
-          <Rendered
+          {!this.state.checkingGrammar && <Rendered
             ref="rendered"
             className="editor_rendered"
-            text={this.props.rendered}/>
+            text={this.props.rendered}/>}
+          {this.state.checkingGrammar && <CheckGrammar
+            toggleGrammar={this.onCheckGrammar}
+            raw={this.props.updatedRaw} />}
         </div>
       </div>
     </div>;

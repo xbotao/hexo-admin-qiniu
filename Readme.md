@@ -8,7 +8,9 @@ An admin UI for the [Hexo blog engine](http://hexo.io). Based off of the [Ghost]
 
 ## Hexo-admin with qiniu
 
-[Hexo-admin-qiniu](https://github.com/xbotao/hexo-admin-qiniu) 是根据[hexo-admin](https://github.com/jaredly/hexo-admin)@2.1.0 进行修改的自改版本
+[**使用说明**](https://xbotao.github.io/hexo-admin-qiniu/) 
+
+hexo-admin-qiniu是根据[hexo-admin](https://github.com/jaredly/hexo-admin)@2.1.0 进行修改的自改版本
 
 ### 修改内容
   - [x] Hexo-admin@2.1.0修改版， 添加上传图片到七牛
@@ -20,59 +22,6 @@ An admin UI for the [Hexo blog engine](http://hexo.io). Based off of the [Ghost]
   - [ ] 运行自定义指令
   - [ ] 修改hexo-admin-qiniu打开地址为 [localhost:4000/admin](http://localhost:4000/admin),防止与hexo-admin冲突
   - [x] 图片瘦身，七牛云存储使用 **华东区bucket** 可以启用图片瘦身功能，**仅** 华东区可以使用
-
-## 基础入门
-
-### 1. 安装Hexo并创建博客
-
-```
-npm install -g hexo
-cd ~/
-hexo init my-blog
-cd my-blog
-npm install
-```
-
-### 2. 安装**hexo-admin-qiniu**插件并开始使用
-
-*该功能还未启用,当前仍需要使用http://localhost:4000/admin/打开*
-
-```
-npm install --save hexo-admin-qiniu
-hexo server -d
-open http://localhost:4000/admin/
-```
-
-## 如何使用七牛
-
-博客配置文件中 `_config.yml` 添加七牛配置属性
-
-查看[七牛配置](docs/how-to-use-qiniu.md)
-
-```
-admin:
-  qiniuCfg:
-      imageslim: true  # 启动图片瘦身，仅华东区bucket可以使用
-      AccessKey: 'your qiniu AK'
-      SecretKey: 'your qiniu SK'
-      BucketName: 'your BK Name'
-      bucketHost: 'you BK Host'
-```
-
-## 发布
-
-点击`deploy`按钮，发布博客到静态托管网页。
-使用之前，需要在博客配置文件`_config.yml`中配置好`deploy`属性
-
-```
-deploy:
-  type: git
-  repo:
-    github: xxxxxxxxxxxx.git,master
-```
-### 如何发布
-
-![](docs/xyrqgzm3428lrzrohsr7fovahh.png)
 
 ---
 ## 致谢

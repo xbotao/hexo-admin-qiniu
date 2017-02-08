@@ -1,4 +1,5 @@
 
+var path = require('path')
 var React = require('react/addons')
 var cx = React.addons.classSet
 var Link = require('react-router').Link;
@@ -67,7 +68,7 @@ var Posts = React.createClass({
               <span className="posts_post-date">
                 {moment(post.date).format('MMM Do YYYY')}
               </span>
-              <a className='posts_perma-link' target="_blank" href={rootPath + '/' + post.path}>
+              <a className='posts_perma-link' target="_blank" href={path.join(rootPath, '/', post.path)}>
                 <i className='fa fa-link'/>
               </a>
               <Link className='posts_edit-link' to="post" postId={post._id}>
@@ -81,7 +82,7 @@ var Posts = React.createClass({
         'posts_display': true,
         'posts_display--draft': current.isDraft
       })}>
-        {current.isDraft && <div className="posts_draft-message">草稿</div>}
+        {current.isDraft && <div className="posts_draft-message">Draft</div>}
         <Rendered
           ref="rendered"
           className="posts_content"

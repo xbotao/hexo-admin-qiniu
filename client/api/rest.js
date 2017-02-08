@@ -46,12 +46,20 @@ module.exports = function (baseUrl) {
     },
     deploy: (message) => post('/deploy', {message: message}),
     newPage: (title) => post('/pages/new', {title: title}),
-    uploadImage: (data) => post('/images/upload', {data: data}),
+    uploadImage: (data, filename) => post('/images/upload', {data: data, filename: filename}),
     getToken: (data) => post('/qiniu/getToken', {data: data}),
     remove: (id) => post('/posts/' + id + '/remove'),
     publish: (id) => post('/posts/' + id + '/publish'),
     unpublish: (id) => post('/posts/' + id + '/unpublish'),
-    tagsAndCategories: () => get('/tags-and-categories'),
+    renamePost: (id, filename) => post('/posts/' + id + '/rename', {
+      filename: filename
+    }),
+    tagsCategoriesAndMetadata: () => get('/tags-categories-and-metadata'),
+    settings: () => get('/settings/list'),
+    setSetting: (name, value, addedOptions) => post('/settings/set', {
+      name: name,
+      value: value,
+      addedOptions: addedOptions
+    })
   }
 }
-

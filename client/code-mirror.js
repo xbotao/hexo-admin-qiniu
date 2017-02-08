@@ -1,11 +1,13 @@
 
 var React = require('react')
-var CM = require('code-mirror')
+var CM = require('codemirror/lib/codemirror')
 var PT = React.PropTypes
 var api = require('./api')
 
 function RandomName() {
-    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    var myDate = new Date();
+    var dataTime = myDate.getTime();
+    return dataTime.toString() + Math.random().toString(36).substring(2, 10)+'.png';
 }
 
 function _qiniuUpload(f, token, key, fn) {
@@ -41,23 +43,37 @@ function _qiniuUpload(f, token, key, fn) {
 
 var CodeMirror = React.createClass({
   propTypes: {
-    onScroll: PT.func
+    onScroll: PT.func,
+    forceLineNumbers: PT.bool,
+    adminSettings: PT.object
   },
 
   componentDidUpdate: function (prevProps) {
     if (prevProps.initialValue !== this.props.initialValue) {
       this.cm.setValue(this.props.initialValue)
     }
+    // on forcing line numbers, set or unset linenumbers if not set in adminSettings
+    if (prevProps.forceLineNumbers !== this.props.forceLineNumbers) {
+      if (!(this.props.adminSettings.editor || {}).lineNumbers) {
+        this.cm.setOption('lineNumbers', this.props.forceLineNumbers);
+      }
+    }
   },
 
   componentDidMount: function () {
-    require('code-mirror/mode/markdown')
-    this.cm = CM(this.getDOMNode(), {
+    require('codemirror/mode/markdown/markdown')
+
+    var editorSettings = {
       value: this.props.initialValue || '',
-      theme: require('code-mirror/theme/default'),
+      theme: 'default',
       mode: 'markdown',
       lineWrapping: true,
-    });
+    }
+    for (var key in this.props.adminSettings.editor) {
+      editorSettings[key] = this.props.adminSettings.editor[key]
+    }
+
+    this.cm = CM(this.getDOMNode(), editorSettings);
     this.cm.on('change', (cm) => {
       this.props.onChange(cm.getValue())
     })
@@ -96,7 +112,6 @@ var CodeMirror = React.createClass({
     };
     if (!blob) return
 
-
     var cmEditor = this.cm;
     var imgName = RandomName();
 
@@ -114,11 +129,20 @@ var CodeMirror = React.createClass({
           cmEditor.replaceSelection(pasteImg)
         })
       });
-  
+
+    // var settings = this.props.adminSettings
     // var reader = new FileReader();
     // reader.onload = (event) => {
-    //   api.uploadImage(event.target.result).then((src) =>
-    //     this.cm.replaceSelection('![pasted image1](' + src + ')')
+    //   var filename = null;
+    //   if (settings.options) {
+    //     if(!!settings.options.askImageFilename) {
+    //       var filePath = !!settings.options.imagePath ? settings.options.imagePath : '/images'
+    //       filename = prompt(`What would you like to name the photo? All files saved as pngs. Name will be relative to ${filePath}.`, 'image.png')
+    //     }
+    //   }
+    //   console.log(filename)
+    //   api.uploadImage(event.target.result, filename).then((res) =>
+    //     this.cm.replaceSelection(`\n![${res.msg}](${res.src})`)
     //   );
     // };
     // reader.readAsDataURL(blob);

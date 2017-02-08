@@ -5,16 +5,33 @@ var React = require('react/addons')
 var cx = React.addons.classSet
 var Promise = require('es6-promise').Promise
 var marked = require('marked')
+var highlight = require('highlight.js')
 var Editor = require('./editor')
 var _ = require('lodash')
 var moment = require('moment')
 var Router = require('react-router');
 
+marked.setOptions({
+    renderer: new marked.Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: false,
+    smartLists: true,
+    smartypants: false,
+    
+    highlight: function (code) {
+    return highlight.highlightAuto(code).value;
+  }
+});
+
 var Post = React.createClass({
   mixins: [DataFetcher((params) => {
     return {
       post: api.post(params.postId),
-      tagsAndCategories: api.tagsAndCategories()
+      tagsCategoriesAndMetadata: api.tagsCategoriesAndMetadata(),
+      settings: api.settings()
     }
   })],
 
@@ -38,12 +55,17 @@ var Post = React.createClass({
   handleChange: function (update) {
     var now = moment()
     api.post(this.props.params.postId, update).then((data) => {
-      this.setState({
-        tagsAndCategories: data.tagsAndCategories,
+      var state = {
+        tagsCategoriesAndMetadata: data.tagsCategoriesAndMetadata,
         post: data.post,
         updated: now,
         author: data.post.author,
-      })
+      }
+      for(var i=0; i<data.tagsCategoriesAndMetadata.metadata.length; i++){
+        var name = data.tagsCategoriesAndMetadata.metadata[i]
+        state[name] = data.post[name]
+      }
+      this.setState(state)
     })
   },
 
@@ -102,28 +124,27 @@ var Post = React.createClass({
 
   render: function () {
     var post = this.state.post
-    if (!post || !this.state.tagsAndCategories) {
+    var settings = this.state.settings
+    if (!post || !this.state.tagsCategoriesAndMetadata || !settings) {
       return <span>Loading...</span>
     }
-    var url = window.location.href.replace(/^.*\/\/[^\/]+/, '').split('/')
-    var rootPath = url.slice(0, url.indexOf('admin')).join('/')
-    var permaLink = rootPath + '/' + post.path
     return Editor({
       post: this.state.post,
       raw: this.state.initialRaw,
+      updatedRaw: this.state.raw,
       wordCount: this.state.raw ? this.state.raw.split(' ').length : 0,
       isDraft: post.isDraft,
       updated: this.state.updated,
       title: this.state.title,
       rendered: this.state.rendered,
-      previewLink: permaLink,
       onChange: this.handleChange,
       onChangeContent: this.handleChangeContent,
       onChangeTitle: this.handleChangeTitle,
       onPublish: this.handlePublish,
       onUnpublish: this.handleUnpublish,
       onRemove: this.handleRemove,
-      tagsAndCategories: this.state.tagsAndCategories,
+      tagsCategoriesAndMetadata: this.state.tagsCategoriesAndMetadata,
+      adminSettings: settings
     })
   }
 });

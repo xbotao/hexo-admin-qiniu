@@ -1,73 +1,49 @@
 {
-  "_args": [
-    [
-      "hexo-admin-qiniu",
-      "E:\\WorkSpace\\webProject\\my-blog"
-    ]
+  "name": "hexo-admin-qiniu",
+  "version": "2.1.0",
+  "description": "Adds an admin section to the hexo server",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaredly/hexo-admin.git"
+  },
+  "keywords": [
+    "hexo",
+    "admin",
+    "dashboard",
+    "plugin"
   ],
-  "_cnpm_publish_time": 1466695208089,
-  "_from": "hexo-admin-qiniu@latest",
-  "_id": "hexo-admin-qiniu@2.1.0",
-  "_inCache": true,
-  "_installable": true,
-  "_location": "/hexo-admin-qiniu",
-  "_nodeVersion": "6.2.1",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/hexo-admin-2.1.0.tgz_1466695204662_0.9820946678519249"
-  },
-  "_npmUser": {
-    "email": "jared@jaredforsyth.com",
-    "name": "jabapyth"
-  },
-  "_npmVersion": "3.9.3",
-  "_phantomChildren": {
-    "ent": "2.2.0"
-  },
-  "_requested": {
-    "name": "hexo-admin-qiniu",
-    "raw": "hexo-admin-qiniu",
-    "rawSpec": "",
-    "scope": null,
-    "spec": "latest",
-    "type": "tag"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npm.taobao.org/hexo-admin/download/hexo-admin-2.1.0.tgz",
-  "_shasum": "2868ad94262547d55df0d4f4ea70e512430fbe66",
-  "_shrinkwrap": null,
-  "_spec": "hexo-admin-qiniu",
-  "_where": "E:\\WorkSpace\\webProject\\my-blog",
-  "author": {
-    "email": "xbotao2014@163.com",
-    "name": "Lazyboy"
-  },
+  "author": "Jared Forsyth <jared@jaredforsyth.com>",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/xbotao/hexo-admin-qiniu/issues"
+    "url": "https://github.com/jaredly/hexo-admin/issues"
   },
+  "homepage": "http://jaredly.github.io/hexo-admin/",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.5.0",
     "browserify": "^11.2.0",
     "connect-auth": "^0.6.1",
     "cookie-parser": "^1.3.4",
+    "deep-assign": "^2.0.0",
     "express-session": "^1.10.3",
     "extend": "^3.0.0",
     "hexo-front-matter": "^0.2.2",
     "hexo-fs": "^0.1.3",
-    "hexo-git-backup": "^0.1.2",
     "hexo-util": "^0.1.6",
+    "highlight.js": "^9.9.0",
     "less": "^2.5.1",
     "moment": "^2.7.0",
     "qiniu": "^6.1.13",
-    "serve-static": "^1.4.0"
+    "serve-static": "^1.4.0",
+    "write-good": "^0.10.0"
   },
-  "description": "Adds an admin section to the hexo server",
   "devDependencies": {
     "browserify": "^11.2.0",
-    "code-mirror": "^3.22.0",
+    "codemirror": "^5.20.2",
     "es6-promise": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-less": "^3.0.5",
@@ -86,37 +62,5 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
-  },
-  "directories": {},
-  "dist": {
-    "shasum": "2868ad94262547d55df0d4f4ea70e512430fbe66",
-    "tarball": "https://registry.npmjs.org/hexo-admin/-/hexo-admin-2.1.0.tgz"
-  },
-  "gitHead": "430d07f4d3c0329a762a2bbb0735887a67c125b4",
-  "homepage": "http://jaredly.github.io/hexo-admin/",
-  "keywords": [
-    "hexo",
-    "admin",
-    "dashboard",
-    "plugin"
-  ],
-  "license": "ISC",
-  "main": "index.js",
-  "maintainers": [
-    {
-      "email": "jared@jaredforsyth.com",
-      "name": "jabapyth"
-    }
-  ],
-  "name": "hexo-admin-qiniu",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xbotao/hexo-admin-qiniu.git"
-  },
-  "scripts": {
-    "prepublish": "gulp build"
-  },
-  "version": "2.1.1"
+  }
 }

@@ -10,8 +10,9 @@ var App = React.createClass({
         <span className="app_title">Hexo Admin</span>
         <ul className="app_nav">
           <li><Link to="posts">文章</Link></li>
-          <li><Link to="pages">页面</Link></li>          
+          <li><Link to="pages">页面</Link></li>
           <li><Link to="deploy">发布</Link></li>
+          <li><Link to="settings">设置</Link></li>
           <li><Link to="about">关于</Link></li>
         </ul>
       </div>
@@ -23,4 +24,3 @@ var App = React.createClass({
 })
 
 module.exports = App
-
