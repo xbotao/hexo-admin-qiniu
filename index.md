@@ -1,12 +1,36 @@
 ---
 layout: default
-title: admin-qiniu
 ---
+# 基础入门
 
-# hexo-admin-qiniu
-根据hexo-admin@2.1.0进行修改，添加粘贴图片上传至七牛
+### 1. 安装Hexo并创建博客
 
-# 使用说明
+```
+npm install -g hexo
+cd ~/
+hexo init my-blog
+cd my-blog
+npm install
+```
 
-1. [如何使用开启七牛托管](https://xbotao.github.io/hexo-admin-qiniu/useQiniu)
-2. [windows下实现开机启动](https://xbotao.github.io/hexo-admin-qiniu/autoStart)
+### 2. 安装**hexo-admin-qiniu**插件并开始使用
+
+```
+npm install --save hexo-admin-qiniu
+hexo server -d
+open http://localhost:4000/admin/
+```
+
+# 使用技巧
+
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li>
+      <h3>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>&nbsp;&#45;&nbsp;<small><span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span></small>
+      </h3>
+    </li>
+  {% endfor %}
+</ul>
+
+

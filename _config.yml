@@ -1,7 +1,9 @@
-theme: jekyll-theme-cayman
+title: Hexo-admin-qiniu
+description: alter by hexo-admin@2.1.0
+show_downloads: false
+Home_url: /
 
-# Setup
-title:        hexo-admin-qiniu
-tagline:      A responsive theme for your project on GitHub Pages
-baseurl:      ""
-paginate:     1
+github:
+  is_project_page: true
+
+theme: 
