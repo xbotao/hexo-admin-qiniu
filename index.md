@@ -1,4 +1,6 @@
 ---
+title: hexo-admin-qiniu
+description: 使用说明
 layout: default
 ---
 # 基础入门
