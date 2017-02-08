@@ -24,6 +24,32 @@ hexo server -d
 open http://localhost:4000/admin/
 ```
 
+### 3. 站点配置文件添加qiniu配置项
+
+获取七牛AK、SK等参考使用技巧中相关文章
+
+```
+admin:
+  qiniuCfg:
+      imageslim: true  # 启动图片瘦身，仅华东区bucket可以使用
+      AccessKey: 'your qiniu AK'
+      SecretKey: 'your qiniu SK'
+      BucketName: 'your BK Name'
+      bucketHost: 'you BK Host'
+```
+
+### 4. 发布文章
+
+点击`deploy`按钮，发布博客到静态托管网页。
+使用之前，需要在博客配置文件`_config.yml`中配置好`deploy`属性
+
+```
+deploy:
+  type: git
+  repo:
+    github: xxxxxxxxxxxx.git,master
+```
+
 ## 使用技巧
 
 <ul class="post-list">
