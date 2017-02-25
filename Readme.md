@@ -1,4 +1,4 @@
-An admin UI for the [Hexo blog engine](http://hexo.io). Based off of the [Ghost](http://ghost.org) interface, with inspiration from [svbtle](http://svbtle.com) and [prose.io](http://prose.io).
+Based on [hexo-admin@2.2.0](https://github.com/jaredly/hexo-admin), add upload image to qiniu
 
 ## Hexo-admin
 
