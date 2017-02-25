@@ -60,17 +60,17 @@ var Deploy = React.createClass({
     return (
       <div className="deploy" style={divStyle}>
         <p>
-          输入提交信息，并点击『发布』按钮来运行你的部署脚本.
+          Type a message here and hit `deploy` to run your deploy script.
         </p>
         <form className='deploy_form' onSubmit={this.handleSubmit}>
           <input
             type="text"
             className="deploy_message"
             value={this.state.message}
-            placeholder="提交信息/可为空"
+            placeholder="Deploy/commit message"
             onChange={e => this.setState({message: e.target.value})}
           />
-          <input type="submit" value="发布" />
+          <input type="submit" value="Deploy" />
         </form>
         {body}
       </div>

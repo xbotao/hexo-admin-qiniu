@@ -9,7 +9,14 @@ var About = React.createClass({
         Useful links:
         <ul>
           <li><a href="http://hexo.io">Hexo site</a></li>
-          <li><a href="https://github.com/jaredly/hexo-admin-plugin">Github page for this plugin</a></li>
+          <li><a href="https://github.com/jaredly/hexo-admin-plugin">Github page for Hexo-admin</a></li>
+          <li><a href="https://github.com/xbotao/hexo-admin-qiniu">add 'qiniu' to Hexo-admin</a></li>
+        </ul>
+      </p>
+      <p>
+        Helper:
+        <ul>
+          <li><a href="https://xbotao.github.io/hexo-admin-qiniu/">Hexo-admin-qiniu</a></li>
         </ul>
       </p>
     </div>

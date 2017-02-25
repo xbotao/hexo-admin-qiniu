@@ -13,7 +13,7 @@ function RandomName() {
 function _qiniuUpload(f, token, key, fn) {
 
   var xhr = new XMLHttpRequest();
-  //创建表单
+
   xhr.open('POST', 'http://up.qiniu.com', true);
   var formData, startDate;
   formData = new FormData();
@@ -23,16 +23,16 @@ function _qiniuUpload(f, token, key, fn) {
   var taking;
 	  
   xhr.onreadystatechange = function (response) {
-    //上传成功则执行回调
+
     if (xhr.readyState == 4 && xhr.status == 200 && xhr.responseText) {
       var blkRet = JSON.parse(xhr.responseText);
       fn(blkRet);
     } else if (xhr.status != 200 && xhr.responseText) {
       if(xhr.status == 631){
-        //editor.fire('error',{msg:'七牛空间不存在.'});
+
       }
       else{
-        //editor.fire('error',{msg:'七牛设置错误.'});
+
       }
     }
   };
@@ -82,8 +82,8 @@ var CodeMirror = React.createClass({
       var max = node.scrollHeight - node.getBoundingClientRect().height
       this.props.onScroll(node.scrollTop / max)
     })
-    var box = this.getDOMNode().getBoundingClientRect()
-    this.cm.setSize(box.width, box.height)
+    var box = this.getDOMNode().parentNode.getBoundingClientRect()
+    this.cm.setSize(box.width, box.height - 32)
 
     window.addEventListener('resize', this._onResize)
 
@@ -91,8 +91,9 @@ var CodeMirror = React.createClass({
   },
 
   _onResize: function () {
-    var box = this.getDOMNode().getBoundingClientRect()
-    this.cm.setSize(box.width, box.height)
+    var box = this.getDOMNode().parentNode.getBoundingClientRect()
+    // need to subtract header to get proper height without flexbox (see #124)
+    this.cm.setSize(box.width, box.height - 32)
   },
 
   componentWillUnmount: function () {

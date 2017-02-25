@@ -404,7 +404,7 @@ module.exports = function (app, hexo) {
     })
   });
 
-    use('qiniu/getToken', function(req, res, next) {
+  use('qiniu/getToken', function(req, res, next) {
     if (req.method !== 'POST') return next()
     if (!hexo.config.admin || !hexo.config.admin.qiniuCfg) {
       return res.done({error: 'Config value "admin.qiniuCfg" not found'});

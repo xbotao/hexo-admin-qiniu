@@ -11,15 +11,9 @@ function once(fn) {
 
 module.exports = function (command, message, done) {
   done = once(done);
+  
   //var proc = spawn(command, [message], {detached: true});
   var proc = spawn((process.platform === "win32" ? "hexo.cmd":"hexo"), ['d', '-g', message]);
-
-  // var proc;
-  // if(process.platform === "win32"){
-  //   proc =  exec('hexo-deploy.bat');
-  // }else{
-  //   proc = spawn(command, [message], {detached: true});
-  // }
 
   var stdout = '';
   var stderr = '';
